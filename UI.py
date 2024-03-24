@@ -16,3 +16,11 @@ class SB(Entity):
 			scale=(0.1, 0.1, 0.1)
 			)
 
+class VERSION(Text):
+	def __init__(self, text="version"):
+		super().__init__(
+			parent=camera.ui,
+			position=Vec2(-0.81, 0.5),
+			text=text,
+			scale=1.5
+			)

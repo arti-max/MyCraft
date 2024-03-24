@@ -217,6 +217,7 @@ def input(key):
 
 
 selected_block = SB(texture=id_1)
+version = VERSION(text="0.0.2")
 
 def update():
 	global selected_block
