@@ -37,13 +37,28 @@ BLOCKS = [
 #def Resume(self):
 	#player.enabled = True
 
+
+#-------CONFIG-----------
+config = configparser.ConfigParser()
+
+config.add_section('settings')
+config.set('settings', 'render-distance', '45')
+if os.path.exists("config.cfg"):
+	print("true")
+else:
+	with open('config.cfg', 'w') as cfg:
+		config.write(cfg)
+config.read('config.cfg')
+cfg_value1 = config.get('settings', 'render-distance')
+cfg_value1 = int(cfg_value1)
+
 Game = Ursina(title="MyCraft", icon="res/stone.ico", development_mode=False, borderless = False)
 window.exit_button.enabled = False
 window.cog_button.enabled = False
 window.fullscreen = False
 window.position=Vec2(100, 100)
 
-camera.clip_plane_far=45
+camera.clip_plane_far=cfg_value1
 
 i = 0
 bid = f"block_{i}"
