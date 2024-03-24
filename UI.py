@@ -15,3 +15,4 @@ class SB(Entity):
 			position=Vec2(0.7, 0.4),
 			scale=(0.1, 0.1, 0.1)
 			)
+

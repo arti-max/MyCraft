@@ -37,7 +37,7 @@ BLOCKS = [
 #def Resume(self):
 	#player.enabled = True
 
-Game = Ursina(title="MyCraft", development_mode=False, borderless = False)
+Game = Ursina(title="MyCraft", icon="res/stone.ico", development_mode=False, borderless = False)
 window.exit_button.enabled = False
 window.cog_button.enabled = False
 window.fullscreen = False
@@ -57,18 +57,18 @@ if (os.path.exists("level.dat")):
 	LEVEL = levelLoad("level.dat")
 	for i in range(len(LEVEL)):
 		bid = f"block_{i}"
-		if (LEVEL[i][3] == 0):
-			block = Adminium((LEVEL[i][0], LEVEL[i][1], LEVEL[i][2]))
-		if (LEVEL[i][3] == 1):
-			block = Grass((LEVEL[i][0], LEVEL[i][1], LEVEL[i][2]))
-		if (LEVEL[i][3] == 2):
-			block = Stone((LEVEL[i][0], LEVEL[i][1], LEVEL[i][2]))
-		if (LEVEL[i][3] == 3):
-			block = Planks((LEVEL[i][0], LEVEL[i][1], LEVEL[i][2]))
+		if (LEVEL[i][1] == 0):
+			block = Adminium((LEVEL[i][0]))
+		if (LEVEL[i][1] == 1):
+			block = Grass((LEVEL[i][0]))
+		if (LEVEL[i][1] == 2):
+			block = Stone((LEVEL[i][0]))
+		if (LEVEL[i][1] == 3):
+			block = Planks((LEVEL[i][0]))
 		new_block = block
 		new_block.name = bid
 		LEVELBLOCKS[bid] = new_block
-		POSgenerate(LEVEL[i][0], LEVEL[i][1], LEVEL[i][2])
+		POSgenerate(LEVEL[i][0])
 		i+=1
 else:
 	for x in range(15):
@@ -84,7 +84,7 @@ else:
 				new_block = block
 				new_block.name = bid
 				LEVELBLOCKS[bid] = new_block
-				levelGenerate(x, y, z, block_id)
+				levelGenerate(block.position, block_id)
 				block_id = 1
 				i+=1
 
@@ -158,6 +158,7 @@ def input(key):
 			if E:
 				print("camera: ", camera.forward)
 				pos = E.position + mouse.normal
+				pos = tuple(pos)
 				bid = f"block_{i}"
 				posY = int(E.position.y)
 				print("Old pos: ", E.position.x, posY, E.position.z)
@@ -171,7 +172,7 @@ def input(key):
 				new_block.name = bid
 				LEVELBLOCKS[bid] = new_block
 				print("New pos: ", E.position.x, posY, E.position.z)
-				LEVEL.append([int(E.position.x), posY, int(E.position.z), block_id])
+				LEVEL.append([pos, block_id])
 				levelSave(LEVEL, "level.dat")
 				i += 1
 				#print (Blocks)
