@@ -3,11 +3,8 @@ import sys
 from ursina import *
 
 LEVEL = []
-LEVELPOS = []
 LEVELBLOCKS = {}
 
-def levelGenerate(pos, block_id):	
-	LEVEL.append([pos, block_id, 0])
-	LEVELPOS.append([pos])
-def POSgenerate(pos):
-	LEVELPOS.append([pos])
+def levelGenerate(x, y, z, block_id):	
+	LEVEL.append([x, y, z, block_id])
+	print (x, y, z, block_id)
