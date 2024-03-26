@@ -66,14 +66,12 @@ def ButtonLoad(LEVEL, name):
 		config.set('settings', 'load-level', name)
 		with open('../config.cfg', 'w') as cfg:
 			config.write(cfg)
-			os.startfile("menu.py")
 		application.quit()
 	else:
 		if name == 'None':
 			config.set('settings', 'load-level', name)
 			with open('../config.cfg', 'w') as cfg:
 				config.write(cfg)
-			os.startfile("menu.py")
 			application.quit()
 
 
@@ -92,8 +90,6 @@ config = configparser.ConfigParser()
 config.add_section('settings')
 config.set('settings', 'render-distance', '45')
 config.set('settings', 'load-level', 'None')
-config.set('settings', 'server-ip', '0.0.0.0')
-config.set('settings', 'port', '25565')
 
 if os.path.exists("../config.cfg"):
 	print("true")
@@ -131,21 +127,14 @@ sky_texture = load_texture("res/sky_blue.png")
 if load_level == 'None':
 	for x in range(15):
 		for z in range(15):
-			for y in range(5):
+			for y in range(4):
 				bid = f"block_{bi}"
 				if (y == 0):
 					block = Adminium()
 					generate_id = 0
-				else:
-					if (y == 3):
-						block = Dirt()
-						generate_id = 4
-					elif (y <= 2):
-						block = Stone()
-						generate_id = 2
-					else:
-						block = Grass()
-						generate_id = 1
+				else::
+					block = Grass()
+					generate_id = 1
 				new_block = block
 				new_block.name = bid
 				new_block.position = Vec3(x ,y ,z)
@@ -167,8 +156,6 @@ else:
 				block = Stone()
 			if (LEVEL[i][3] == 3):
 				block = Planks()
-			if (LEVEL[i][3] == 4):
-				block = Dirt()
 
 			pos = LEVEL[i][0], LEVEL[i][1], LEVEL[i][2]
 			new_block = block
@@ -188,15 +175,8 @@ else:
 						block = Adminium()
 						generate_id = 0
 					else:
-						if (y == 3):
-							block = Dirt()
-							generate_id = 4
-						elif (y <= 2):
-							block = Stone()
-							generate_id = 2
-						else:
-							block = Grass()
-							generate_id = 1
+						block = Grass()
+						generate_id = 1
 					new_block = block
 					new_block.name = bid
 					new_block.position = Vec3(x ,y ,z)
@@ -390,10 +370,6 @@ def update():
 		block_id = 3
 		destroy(selected_block)
 		selected_block = SB(texture=id_3)
-	if held_keys['4']:
-		block_id = 4
-		destroy(selected_block)
-		selected_block = SB(texture=id_4)
 
 Sky(texture=sky_texture)
 app.run()
