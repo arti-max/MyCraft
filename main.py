@@ -230,7 +230,6 @@ def input(key):
 					LEVEL.pop(index)
 
 			if key == "escape":
-				os.startfile("menu.py")
 				sys.exit()
 
 			if key == "r":
