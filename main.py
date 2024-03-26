@@ -211,7 +211,6 @@ def input(key):
 					if block_id == 1: block = Grass()
 					elif block_id == 2: block = Stone()
 					elif block_id == 3: block = Planks()
-					elif block_id == 4: block = Dirt()
 					new_block = block
 					new_block.name = bid
 					new_block.position = pos
