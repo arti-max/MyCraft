@@ -22,6 +22,13 @@ class Planks(Block):
 		self.breakable = True
 		self.id = 3
 
+class Dirt(Block):
+	def __init__(self, position=(0, 0, 0)):
+		super().__init__(position)
+		self.texture = "res/dirt.png"
+		self.breakable = True
+		self.id = 4
+
 class Adminium(Block):
 	def __init__(self, position=(0, 0, 0)):
 		super().__init__(position)
