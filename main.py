@@ -373,7 +373,7 @@ def input(key):
 
 
 selected_block = SB(texture=id_1)
-version = VERSION(text="0.0.3")
+version = VERSION(text="0.0.2_01")
 
 def update():
 	global selected_block
