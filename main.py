@@ -132,7 +132,7 @@ if load_level == 'None':
 				if (y == 0):
 					block = Adminium()
 					generate_id = 0
-				else::
+				else:
 					block = Grass()
 					generate_id = 1
 				new_block = block
